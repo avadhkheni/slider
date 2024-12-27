@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+    #xyz{
+   
+    }
+    </style>
+</head>
+
+<body id="body">
+    <img src="" id="image_slide" alt="" width="500px">
+</body>
+
+</html>
+<script>
+
+    let div = document.createElement("div")
+    div.id = "silder"
+
+    let img = document.createElement("img")
+    img.src = ""
+    img.alt = ""
+    img.width = "50%"
+    img.id = "img"
+
+    div.appendChild(img)
+
+    let h3 = document.createElement("h3")
+    h3.id = "slid-title"
+
+    div.appendChild(h3)
+
+    let p = document.createElement("p")
+    p.id = "slid-desc"
+
+    div.appendChild(p)
+
+       let div2 = document.createElement("div")
+    div2.id="xyz"
+    
+    div.appendChild(div2)
+
+    let button1 = document.createElement("button")
+    button1.id = "pre-btn"
+    button1.innerText = "Previous"
+
+    div.appendChild(button1)
+
+    let button2 = document.createElement("button")
+    button2.id = "next-btn"
+    button2.innerText = "Next"
+
+    div.appendChild(button2)
+
+ console.log(div)
+
+    document.getElementById("body").appendChild(div)
+    document.getElementById("xyz").appendChild(button1)
+    document.getElementById("xyz").appendChild(button2)
+
+    // #####################################################################################
+
+    const slider = [{
+        image: "https://wanderingcarol.com/wp-content/uploads/2017/07/Conwy-Castle.jpg",
+        title: "slide 1",
+        description: "Wikimedia Commons "
+    },
+    {
+        image: "https://cadw.gov.wales/sites/default/files/styles/image_gallery_full_size/public/2023-04/Caernarfon-Castle-KG-1.jpg?itok=LgoZsO0L",
+        title: "slide 2",
+        description: " planet Nebulae in space Space"
+    },
+    {
+
+        image: "https://live.staticflickr.com/5624/30165233913_74b133fa00_b.jpg",
+        title: "slide 3",
+        description: "Wikimedia Commons "
+    },
+    {
+        image: "https://cadw.gov.wales/sites/default/files/styles/image_gallery_full_size/public/2023-04/Conwy-Castle-aerial-view.jpg?itok=kAVkYPcj",
+        title: "slide 4",
+        description: "Space wallpapers pocket pc, pda, desktop backgrounds hd, pictures "
+    },
+    {
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_zY5ukSkuzxX8YSxEnqGkyMIV2Tnr7u2aWQ&s",
+        title: "slide 5",
+        description: "Wikimedia Commons "
+    }]
+
+    let currentIndex = 0
+
+    const showSlide = () => {
+        const slide = slider[currentIndex]
+        // console.log(slide)
+        console.log(slide.image)
+        document.getElementById("image_slide").src = slide.image
+        document.getElementById("slid-title").innerHTML = slide.title
+        document.getElementById("slid-desc").innerHTML = slide.description
+    }
+
+    // const nextBtn = () => {
+    //     currentIndex++
+
+    //     if (currentIndex >= slider.length) {
+    //         currentIndex = 0
+    //     }
+    //     showSlide()
+    // }
+    document.getElementById("next-btn").addEventListener("click", () => {
+        currentIndex++
+        if (currentIndex >= slider.length) {
+            currentIndex = 0
+        }
+        showSlide()
+    })
+
+    document.getElementById("pre-btn").addEventListener("click", () => {
+        currentIndex--
+
+        if (currentIndex < 0) {
+            currentIndex = slider.length - 1
+        }
+        showSlide()
+    })
+
+    showSlide()
+
+</script>
